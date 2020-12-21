@@ -25,10 +25,10 @@ func NewServer(config *Config) *Server {
 func (s *Server) Start() error {
 
 	r := mux.NewRouter()
+	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("web"))))
 	r.HandleFunc("/", s.indexHandler()).Methods("GET")
 	r.HandleFunc("/control", s.controlHandler()).Methods("GET")
 	r.HandleFunc("/list", s.listHandler()).Methods("GET")
-	//r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("web"))))
 
 	log.Println(fmt.Sprintf("Listening %s/control", s.config.Host))
 	if err := http.ListenAndServe(s.config.Host, r); err != nil {

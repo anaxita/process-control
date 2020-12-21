@@ -77,7 +77,7 @@ func (s *Server) listHandler() http.HandlerFunc {
 
 func (s *Server) indexHandler() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		tmpl, err := (template.ParseFiles("./web/index.html"))
+		tmpl, err := (template.ParseFiles("/static/index.html"))
 		if err != nil {
 			w.Write([]byte(err.Error()))
 			return
