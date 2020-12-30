@@ -12,4 +12,4 @@
 
 Путь конфига по умолчанию: ```"C:\Program Files\ProcessControl\config.json"```
 
-![](C:\processControl.png)
+![](https://i.ibb.co/mqx1QJp/process-Control.png)
