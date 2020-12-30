@@ -49,6 +49,7 @@ func (s *Server) CountProcess(processName string) (int, error) {
 
 // ProcessList ...
 func (s *Server) ProcessList(processName string) ([]Win32process, error) {
+
 	comm := fmt.Sprintf("Get-Process -ProcessName %s -IncludeUserName | Select UserName, ID", processName)
 	c := exec.Command("powershell", "/c", comm)
 

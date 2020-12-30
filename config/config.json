@@ -1,0 +1,6 @@
+{
+    "Host": ":8080",
+    "Logfile": "C:\\Program Files\\Killer1c77\\log.log",
+    "template": "C:\\Program Files\\Killer1c77\\index.html",
+    "kill": "s.config.KillProcess"
+}

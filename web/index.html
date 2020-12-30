@@ -36,13 +36,17 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"
     integrity="sha384-BOsAfwzjNJHrJ8cZidOg56tcQWfp6y72vEJ8xQ9w6Quywb24iOsW913URv1IS4GD"
     crossorigin="anonymous"></script>
+
   <script>
-    console.log("Все ок")
 
     let list = document.getElementById('list-group')
     let counter = document.getElementById('counter')
     let killBtn = document.getElementById('killBtn')
     let alert = document.getElementById('alert')
+
+          killBtn.insertAdjacentHTML('beforeend', ` <span class="spinner-border spinner-border-sm" id="spinner" role="status" aria-hidden="true"></span>`)
+      killBtn.setAttribute('disabled', 'true')
+
 
     fetch("/list")
       .then(response => response.json())
@@ -58,11 +62,17 @@
         `)
 
           });
+          //killBtn.setAttribute('disabled', 'false')
+          let spinner = document.getElementById('spinner')
+          killBtn.removeChild(spinner)
+          killBtn.disabled = false;
           counter.insertAdjacentHTML('beforeend', response.data.length)
         } else {
+          let spinner = document.getElementById('spinner')
+          killBtn.removeChild(spinner)
+          killBtn.disabled = true;
 
           counter.innerHTML = '0'
-          killBtn.setAttribute('disabled', 'true')
           alert.setAttribute('class', 'alert alert-info')
           alert.innerHTML = 'Процессов не найдено'
         }
@@ -77,17 +87,16 @@
         .then(response => response.json())
         .then(response => {
           console.log(response)
-          if (response.error !== "") {
 
+          if (response.error !== "") {
             alert.setAttribute('class', 'alert alert-danger')
             alert.innerHTML = response.error
-
-
+            
           } else {
             counter.innerHTML = '0'
             alert.setAttribute('class', 'alert alert-success')
             alert.innerHTML = response.data
-            list.innerHTML = `   <li class="list-group-item font-weight-bold"><div class="row">
+            list.innerHTML = `<li class="list-group-item font-weight-bold"><div class="row">
                 <div class="col-lg-2 col">Пользователь</div>
                 <div class="col-lg-2 col">Процесс</div>
                 <div class="col-lg-2 col">ID процесса</div>
@@ -98,7 +107,5 @@
         })
     }
   </script>
-  <!-- <script src="/static/js/script.js"></script> -->
 </body>
-
 </html>

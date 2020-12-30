@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/gorilla/mux"
 )
@@ -48,5 +49,9 @@ func (s *Server) Log(v ...interface{}) {
 	}
 	defer f.Close()
 
-	f.WriteString(fmt.Sprintln(v...))
+	_, err = f.WriteString(fmt.Sprintln(time.Now().Format("02.01.2006 15:04:05"), v))
+	if err != nil {
+		log.Println(err)
+		return
+	}
 }

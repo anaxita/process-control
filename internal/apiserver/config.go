@@ -8,8 +8,10 @@ import (
 
 // Config ..
 type Config struct {
-	Host    string `json:"host"`
-	Logfile string `json:"logfile"`
+	Host        string `json:"host"`
+	Logfile     string `json:"logfile"`
+	Template    string `json:"template"`
+	KillProcess string `json:"kill"`
 }
 
 // NewConfig ...
@@ -27,5 +29,9 @@ func NewConfig(configPath string) (*Config, error) {
 
 	err = json.NewDecoder(f).Decode(config)
 
+	if err != nil {
+		log.Fatal("failed to decode config file")
+		return nil, err
+	}
 	return config, nil
 }
