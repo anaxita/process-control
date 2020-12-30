@@ -10,7 +10,7 @@ import (
 var configPath string
 
 func init() {
-	flag.StringVar(&configPath, "config", "C:\\Program Files\\Killer1c77\\config.json", "path to json config file")
+	flag.StringVar(&configPath, "config", "C:\\Program Files\\ProcessControl\\config.json", "path to json config file")
 }
 func main() {
 	flag.Parse()
