@@ -12,4 +12,4 @@
 
 Путь конфига по умолчанию: ```"C:\Program Files\ProcessControl\config.json"```
 
-![Демо](C:\Users\anaxita\Pictures\processControl.png)
+![](C:\processControl.png)
