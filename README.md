@@ -8,7 +8,7 @@
  3. Файл для логирования
  4. Имя процесса для остановки
 
-При запуске программы нужно указать ключ -config "Ваш путь" до конфиг файла, например:  ```-config "C:\Control\config.json"```.
+При запуске программы нужно указать ключ -config "Ваш путь" до конфиг файла, например:  ```-config "C:\Control\config.json"```
 
-Путь конфига по умолчанию: "C:\Program Files\ProcessControl\config.json"
+Путь конфига по умолчанию: ```"C:\Program Files\ProcessControl\config.json"```
 
