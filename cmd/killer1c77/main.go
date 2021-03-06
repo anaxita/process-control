@@ -7,15 +7,11 @@ import (
 	"github.com/anaxita/process-control/internal/apiserver"
 )
 
-var configPath string
-
-func init() {
-	flag.StringVar(&configPath, "config", "C:\\Program Files\\ProcessControl\\config.json", "path to json config file")
-}
 func main() {
+	configPath := flag.String("config", "C:\\Program Files\\ProcessControl\\config.json", "path to json config file")
 	flag.Parse()
 
-	config, err := apiserver.NewConfig(configPath)
+	config, err := apiserver.NewConfig(*configPath)
 	if err != nil {
 		log.Fatal(err)
 	}
